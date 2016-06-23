@@ -8,7 +8,7 @@
  * 有事请联系QQ:261969254, 微信:efeencheung, Github:efeencheung
  */
 
-namespace Dm\Bundle\ThemeBundle\Extension; 
+namespace Dm\Bundle\AdminBundle\Extension; 
 
 use Knp\Menu\Factory\ExtensionInterface;
 use Knp\Menu\ItemInterface;    

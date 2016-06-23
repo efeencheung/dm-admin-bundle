@@ -8,9 +8,9 @@
  * 有事请联系QQ:261969254, 微信:efeencheung, Github:efeencheung
  */
 
-namespace Dm\Bundle\ThemeBundle\Menu;
+namespace Dm\Bundle\AdminBundle\Menu;
 
-use Dm\Bundle\ThemeBundle\Event\ConfigureMenuEvent;
+use Dm\Bundle\AdminBundle\Event\ConfigureMenuEvent;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 

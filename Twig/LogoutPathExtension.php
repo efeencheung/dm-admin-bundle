@@ -8,7 +8,7 @@
  * 有事请联系QQ:261969254, 微信:efeencheung, Github:efeencheung
  */
 
-namespace Dm\Bundle\ThemeBundle\Twig;
+namespace Dm\Bundle\AdminBundle\Twig;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;

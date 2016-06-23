@@ -8,7 +8,7 @@
  * 有事请联系QQ:261969254, 微信:efeencheung, Github:efeencheung
  */
 
-namespace Dm\Bundle\ThemeBundle\Event;
+namespace Dm\Bundle\AdminBundle\Event;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;

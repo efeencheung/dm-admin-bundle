@@ -8,7 +8,7 @@
  * 有事请联系QQ:261969254, 微信:efeencheung, Github:efeencheung
  */
 
-namespace Dm\Bundle\ThemeBundle\Twig;
+namespace Dm\Bundle\AdminBundle\Twig;
 
 use Symfony\Component\Form\FormView;
 
@@ -45,7 +45,7 @@ class DeleteFormExtension extends \Twig_Extension
      */
     public function renderDeleteForm(FormView $form, $did)
     {
-        return $this->twig->render('DmThemeBundle::form_delete.html.twig', array('form'=>$form, 'did'=>$did));
+        return $this->twig->render('DmAdminBundle::form_delete.html.twig', array('form'=>$form, 'did'=>$did));
     }
 
     public function getName()  

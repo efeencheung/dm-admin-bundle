@@ -8,7 +8,7 @@
  * 有事请联系QQ:261969254, 微信:efeencheung, Github:efeencheung
  */
 
-namespace Dm\Bundle\ThemeBundle\Controller;
+namespace Dm\Bundle\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,6 +26,6 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('DmThemeBundle:Dashboard:index.html.twig');
+        return $this->render('DmAdminBundle:Dashboard:index.html.twig');
     }
 }

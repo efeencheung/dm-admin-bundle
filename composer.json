@@ -1,7 +1,7 @@
 {
-    "name": "efeencheung/dm-theme-bundle",
+    "name": "efeencheung/dm-admin-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony DmThemeBundle",
+    "description": "Symfony DmAdminBundle",
     "license": "MIT",
     "authors": [
         {
@@ -16,7 +16,7 @@
         "knplabs/knp-menu-bundle": "~2.1"
     },
     "autoload": {
-        "psr-4": { "Dm\\Bundle\\ThemeBundle\\": "" }
+        "psr-4": { "Dm\\Bundle\\AdminBundle\\": "" }
     },
     "extra": {
         "branch-alias": {
