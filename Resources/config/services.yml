@@ -1,0 +1,16 @@
+services:
+    dm_theme.twig.delete_form_extension:
+        class: Dm\Bundle\ThemeBundle\Twig\DeleteFormExtension
+        arguments: [ @twig ]   
+        tags:                  
+            - { name: twig.extension } 
+    dm_theme.twig.logout_path_extension:
+        class: Dm\Bundle\ThemeBundle\Twig\LogoutPathExtension
+        arguments: [ @security.logout_url_generator ]   
+        tags:                  
+            - { name: twig.extension } 
+    dm_theme.extension.icon:
+        class: Dm\Bundle\ThemeBundle\Extension\IconExtension
+        public: false
+        tags:
+            - { name: knp_menu.factory_extension }
