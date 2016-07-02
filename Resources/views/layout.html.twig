@@ -77,7 +77,7 @@
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle">
                                 {% if app.user.avatar is defined and app.user.avatar %}
-                                <img alt="" class="img-circle" src="{{ ('/uploads/images/' ~ app.user.avatar.path)|imagine_filter('avatar_thumb') }}" />
+                                <img alt="" class="img-circle" src="{{ (app.user.avatar.webPath)|imagine_filter('avatar_thumb') }}" />
                                 {% else %}
                                 <img alt="" class="img-circle" src="/bundles/dmtheme/metronic/img/avatar.png" />
                                 {% endif %}

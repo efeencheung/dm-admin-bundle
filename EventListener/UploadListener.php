@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Filesystem\Filesystem;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Doctrine\ORM\Event\PostFlushEventArgs;
 use Dm\Bundle\AdminBundle\Entity\UploadAbleInterface;
 
 class UploadListener
@@ -40,7 +41,7 @@ class UploadListener
         }
 
         $this->uploadFile($entity);
-        $this->removeFile($entity);
+        $this->removeOldFile($entity);
     }
 
     public function preRemove(LifecycleEventArgs $args)
@@ -77,7 +78,21 @@ class UploadListener
 
     protected function removeFile($entity)
     {
-        $filename = $entity->getTempFilename() ? $entity->getTempFilename() : $entity->getFilename();
+        $filename = $entity->getFilename();
+
+        $webPath = '/upload/' . $entity->getTypeName() . '/' . substr($filename, 0, 2); // Web路径
+        $filePath = realpath($this->webRootDir) . $webPath; // 文件系统路径
+
+        if (!$this->fs->exists($filePath)) {
+           return;
+        }
+
+        $this->fs->remove($filePath);
+    }
+
+    protected function removeOldFile($entity)
+    {
+        $filename = $entity->getTempFilename();
 
         $webPath = '/upload/' . $entity->getTypeName() . '/' . substr($filename, 0, 2); // Web路径
         $filePath = realpath($this->webRootDir) . $webPath; // 文件系统路径

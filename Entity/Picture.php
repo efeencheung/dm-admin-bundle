@@ -90,9 +90,10 @@ class Picture implements UploadAbleInterface
          */
         if (isset($this->filename)) {
             $this->tempFilename = $this->filename;
+            $this->filename = null;
+        } else {
+            $this->filename = 'init';
         }
-
-        $this->filename = null;
     }
 
     /**
