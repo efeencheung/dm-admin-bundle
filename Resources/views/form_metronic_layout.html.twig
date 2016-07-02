@@ -224,12 +224,12 @@
     </div>
 {%- endblock file_widget -%}
 
-{%- block imagine_widget -%}
+{%- block image_widget -%}
     {%- set type = type|default('file') -%}
 	<div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> 
             {% if value  %}
-            <img src="/uploads/images/{{ value }}" alt="..."> 
+            <img src="{{ value }}" alt="..."> 
             {% endif %}
         </div>
 		<div>
@@ -241,7 +241,7 @@
 			<a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
 		</div>
 	</div>
-{%- endblock imagine_widget -%}
+{%- endblock image_widget -%}
 
 {%- block button_widget -%}
     {%- if label is empty -%}
@@ -319,13 +319,15 @@
         <div class="{{ block('form_group_class') }}">
             {{- form_widget(form) -}}
             {{- form_errors(form) -}}
-            <span class="help-block">{%- if form.vars.attr.help is defined -%}{{ form.vars.attr.help }}{%- endif -%}</span>
             <span class="help-block help-block-error errors-container"></span>
+        </div>
+        <div class="{{ block('form_help_class')}}">
+            <span class="help-block" style="margin-top: 7px;">{%- if form.vars.attr.help is defined -%}{{ form.vars.attr.help }}{%- endif -%}</span>
         </div>
     </div>
 {%- endblock form_row %}
 
-{% block dm_bundle_mediabundle_image_row -%}
+{% block dm_image_row -%}
     <div class="img form-group{% if not valid %} has-error{% endif %}">
         {{ form_label(form) -}}
         <div class="{{ block('form_group_class') }}">
@@ -337,7 +339,7 @@
             <span class="help-block help-block-error errors-container"></span>
         </div>
     </div>
-{% endblock dm_bundle_mediabundle_image_row -%}
+{% endblock dm_image_row -%}
 
 {%- block hidden_row -%}
     {{ form_widget(form) }}
@@ -377,8 +379,10 @@
         <div class="{{ block('form_label_class') }}"></div>
         <div class="{{ block('form_group_class') }}">
             {{ form_widget(form) }}
-            <span class="help-block help-block-error errors-container"></span>
             {{ form_errors(form) }}
+        </div>
+        <div class="{{ block('form_label_class') }}"></div>
+            <span class="help-block help-block-error errors-container"></span>
         </div>
     </div>
 {% endspaceless %}
@@ -467,6 +471,10 @@ col-md-2
 {% block form_group_class -%}
 col-md-4
 {%- endblock form_group_class %}
+
+{% block form_help_class -%}
+col-md-6
+{%- endblock form_help_class %}
 
 {# Support #}
 

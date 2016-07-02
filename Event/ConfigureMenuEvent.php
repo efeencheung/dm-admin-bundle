@@ -16,7 +16,7 @@ use Symfony\Component\EventDispatcher\Event;
 
 class ConfigureMenuEvent extends Event
 {
-    const CONFIGURE = 'dm_theme.menu_configure';
+    const CONFIGURE = 'dm_admin.menu_configure';
 
     private $factory;
     private $menu;
