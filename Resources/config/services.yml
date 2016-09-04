@@ -1,12 +1,12 @@
 services:
     dm_admin.twig.delete_form_extension:
         class: Dm\Bundle\AdminBundle\Twig\DeleteFormExtension
-        arguments: [ @twig ]   
+        arguments: [ "@twig" ]   
         tags:                  
             - { name: twig.extension } 
     dm_admin.twig.logout_path_extension:
         class: Dm\Bundle\AdminBundle\Twig\LogoutPathExtension
-        arguments: [ @security.logout_url_generator ]   
+        arguments: [ "@security.logout_url_generator" ]   
         tags:                  
             - { name: twig.extension } 
     dm_admin.extension.icon:
@@ -19,7 +19,7 @@ services:
         class: Dm\Bundle\AdminBundle\EventListener\UploadListener
         arguments: 
             - '%kernel.root_dir%/../web'
-            - @filesystem
+            - "@filesystem"
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
@@ -28,4 +28,4 @@ services:
         class: Dm\Bundle\AdminBundle\Util\TextareaImageUtil
         arguments: 
             - '%kernel.root_dir%/../web'
-            - @filesystem
+            - "@filesystem"
