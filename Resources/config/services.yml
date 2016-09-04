@@ -24,3 +24,8 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: preRemove }
+    textarea_image_util:
+        class: Dm\Bundle\AdminBundle\Util\TextareaImageUtil
+        arguments: 
+            - '%kernel.root_dir%/../web'
+            - @filesystem

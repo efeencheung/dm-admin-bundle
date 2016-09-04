@@ -19,3 +19,13 @@
 .page-sidebar .page-sidebar-menu {
     padding-top: 20px;
 }
+
+blockquote {
+    border-left: 5px solid #eee;
+}
+
+.note-editor h4 {
+    color: #fc9195;
+    border-left: 10px solid #fc9195;
+    padding-left: 10px;
+}

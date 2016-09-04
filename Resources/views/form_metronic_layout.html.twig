@@ -32,7 +32,6 @@
 {%- endblock collection_widget -%}
 
 {% block textarea_widget -%}
-    {% set attr = attr|merge({class: (attr.class|default('summernote') ~ ' form-control')|trim}) %}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 {%- endblock textarea_widget %}
 
@@ -48,7 +47,7 @@
     <div class="checkbox-list">
         {%- for child in form %}
         <label>
-            {{- form_widget(child, { parent_label_class: label_attr.class|default(''), attr: label_attr, translation_domain: choice_translation_domain }) -}} {{ child.vars.label }} 
+            {{- form_widget(child, { parent_label_class: label_attr.class|default(''), attr: label_attr, translation_domain: choice_translation_domain }) -}}
         </label>
         {% endfor -%}
     </div>
@@ -158,6 +157,7 @@
 
 {%- block integer_widget -%}
     {%- set type = type|default('number') -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' input-xsmall')|trim}) -%}
     {{ block('form_widget_simple') }}
 {%- endblock integer_widget -%}
 
@@ -327,19 +327,57 @@
     </div>
 {%- endblock form_row %}
 
+{% block dm_seo_row -%}
+        {# { form_label(form) -} #}
+    {{- form_widget(form) -}}
+    {{- form_errors(form) -}}
+    <hr />
+{%- endblock dm_seo_row %}
+
+{% block textarea_row -%}
+    <div class="form-group{% if not valid %} has-error{% endif %}">
+        {{ form_label(form) -}}
+        <div class="col-md-6">
+            {{- form_widget(form) -}}
+            {{- form_errors(form) -}}
+            <span class="help-block help-block-error errors-container"></span>
+        </div>
+        <div class="col-md-4">
+            <span class="help-block" style="margin-top: 7px;">{%- if form.vars.attr.help is defined -%}{{ form.vars.attr.help }}{%- endif -%}</span>
+        </div>
+    </div>
+{%- endblock textarea_row %}
+
+
 {% block dm_image_row -%}
     <div class="img form-group{% if not valid %} has-error{% endif %}">
         {{ form_label(form) -}}
         <div class="{{ block('form_group_class') }}">
             {% for child in form  %}
                 {{- form_widget(child) -}}
+                <span class="help-block help-block-error errors-container">{{- form_errors(child) -}}</span>
             {% endfor %}
-            {{- form_errors(form) -}}
-            <span class="help-block">{%- if form.vars.attr.help is defined -%}{{ form.vars.attr.help }}{%- endif -%}</span>
-            <span class="help-block help-block-error errors-container"></span>
+        </div>
+        <div class="col-md-4">
+            <span class="help-block" style="margin-top: 7px;">{%- if form.vars.attr.help is defined -%}{{ form.vars.attr.help }}{%- endif -%}</span>
         </div>
     </div>
 {% endblock dm_image_row -%}
+
+{% block dm_audio_row -%}
+    <div class="form-group{% if not valid %} has-error{% endif %}">
+        {{ form_label(form) -}}
+        <div class="{{ block('form_group_class') }}">
+            {% for child in form  %}
+                {{- form_widget(child) -}}
+                <span class="help-block help-block-error errors-container">{{- form_errors(child) -}}</span>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            <span class="help-block" style="margin-top: 7px;">{%- if form.vars.attr.help is defined -%}{{ form.vars.attr.help }}{%- endif -%}</span>
+        </div>
+    </div>
+{% endblock dm_audio_row -%}
 
 {%- block hidden_row -%}
     {{ form_widget(form) }}

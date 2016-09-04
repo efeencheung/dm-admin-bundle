@@ -1,0 +1,102 @@
+.audioplayer {
+    width: 100%;
+    padding: 15px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.audio-progress-bar {
+    width: 100%;
+    height: 5px;
+    background: #b5b5b5;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    cursor:pointer!important;
+}
+
+.audio-progress-bar-played {
+    background-color: #fb747b;
+    position: relative;
+}
+
+.progress-btn {
+    position:absolute;
+    border: 1px solid #b5b5b5;
+    top:0;
+    right:7px;
+    margin-top:-5px;
+    margin-right:-16px;
+    height:14px;
+    width:14px;
+    border-radius:50%!important;
+    background:#fff;
+    cursor:pointer!important;
+}
+
+.volume-control-btn {
+    color: #666666;
+    font-size: 22px;
+    line-height: 22px;
+    cursor:pointer!important;
+}
+
+.play-control-btn {
+    color: #fb747b;
+    font-size: 22px;
+    line-height: 22px;
+    cursor:pointer!important;
+}
+
+.audio-btn-left {
+    float:left;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+}
+
+.audio-btn-right {
+    float:right;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+}
+
+.volume-bar-container {
+    display: inline-block;
+    padding: 6px 0;
+    margin-left: 5px;
+}
+
+.volume-bar {
+    height: 10px;
+    width: 60px;
+    background: #b5b5b5;
+    cursor:pointer!important;
+}
+
+.volume-bar-now {
+    background-color: #fb747b;
+    height: 10px;
+}
+
+.audio-control-btn {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+}
+
+.audio-time-wrap {
+    color: #666666;
+    display: inline-block;
+    padding: 3px 10px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.audio-time {
+    height: 16px;
+    line-height: 16px;
+    overflow: hidden;
+    font-size: 16px;
+}

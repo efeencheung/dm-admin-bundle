@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Picture
+ * Audio
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Picture implements UploadAbleInterface
+class Audio implements UploadAbleInterface
 {
     /**
      * ID
@@ -36,11 +36,18 @@ class Picture implements UploadAbleInterface
     private $filename;
 
     /**
-     * @Assert\Image(maxSize="2M", maxSizeMessage="图片大小不能超过2M" )
+     * @var UploadedFile
+     *
+     * @Assert\File(
+     *     maxSize="200M", 
+     *     maxSizeMessage="音频大小不能超过200M", 
+     *     mimeTypes={"audio/mpeg", "audio/mp3"},
+     *     mimeTypesMessage="请上传一个MP3格式的音频文件"
+     * )
      */
 	private $file;
 
-    private $tempFilename;
+	private $tempFilename;
 
     /**
      * Get id
@@ -53,7 +60,10 @@ class Picture implements UploadAbleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Set filename
+     *
+     * @param string $filename
+     * @return Image
      */
     public function setFilename($filename)
     {
@@ -63,7 +73,9 @@ class Picture implements UploadAbleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Get filename
+     *
+     * @return string 
      */
     public function getFilename()
     {
@@ -71,14 +83,16 @@ class Picture implements UploadAbleInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Get file.
+     *
+     * @return UploadedFile
      */
     public function getFile()
     {
         return $this->file;
     }
 
-	/**
+    /**
      * {@inheritDoc}
      */
     public function setFile(UploadedFile $file = null)
@@ -90,10 +104,9 @@ class Picture implements UploadAbleInterface
          */
         if (isset($this->filename)) {
             $this->tempFilename = $this->filename;
-            $this->filename = null;
-        } else {
-            $this->filename = 'init';
         }
+
+        $this->filename = null;
     }
 
     /**
@@ -101,7 +114,7 @@ class Picture implements UploadAbleInterface
      */
     public function getTypeName()
     {
-        return 'image';
+        return 'audio';
     }
 
     /**
@@ -109,7 +122,7 @@ class Picture implements UploadAbleInterface
      */
     public function getWebPath()
     {
-        return '/upload/image/' . substr($this->filename, 0, 2) . '/' . $this->filename;
+        return '/upload/' . $this->getTypeName() . '/' . substr($this->filename, 0, 2) . '/' . $this->filename;
     }
 
     /**

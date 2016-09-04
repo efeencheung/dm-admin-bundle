@@ -63,7 +63,7 @@ class UploadListener
             return;
         }
 
-        $filename = sha1(uniqid(mt_rand(), true)) . '.' . $file->guessExtension(); // 生成一个唯一文件名称
+        $filename = sha1(uniqid(mt_rand(), true)) . '.' . $file->getClientOriginalExtension(); // 生成一个唯一文件名称
         $webPath = '/upload/' . $entity->getTypeName() . '/' . substr($filename, 0, 2); // Web路径
         $filePath = realpath($this->webRootDir) . $webPath; // 文件系统路径
 
